@@ -43,7 +43,12 @@ def welcome_mesage():
     ''')
 
 def words_input():
+    """
+    Function to promt the user to input the different words/numbers
+    to be used in the madlib template. 
+    """
     for i in requeted_words:
+        
         print(f'Please enter {i}')
         word = input()
         words.append(word)
@@ -53,23 +58,32 @@ def open_template():
     """
     Open and read the template.txt file locate in the assets folder
     """
-    with open('./assets/template.txt', 'r') as original_template:
-        contents = original_template.read()
-        count = 0
-        while count < 21:
-            for x in contents[:1]:
-                a = contents.find('{')
-                b = contents.find('}') 
-                tobereplaced = contents[a:b+1]
-                value = words[count]
-                new_content = contents.replace(tobereplaced, value, 1)
-                contents = new_content
-            count += 1
+    try:
+        with open('./assets/template.txt', 'r') as original_template:
+            contents = original_template.read()
+            count = 0
+            while count < len(words):
+                for x in contents[:1]:
+                    a = contents.find('{')
+                    b = contents.find('}') 
+                    tobereplaced = contents[a:b+1]
+                    value = words[count]
+                    new_content = contents.replace(tobereplaced, value, 1)
+                    contents = new_content
+                count += 1
 
-    with open('./assets/final_text.txt', 'w') as final_text:
-        final_text.write(new_content)
+        with open('./assets/final_text.txt', 'w') as final_text:
+            final_text.write(new_content)
+            print(new_content)
+    except FileNotFoundError:
+        with open('./assets/error_log.txt', 'w') as error_log:
+            error_log.write('File does not exits error')
+
 
 def main():
+    """
+    Calls the functions needed to run the program.
+    """
     welcome_mesage()
     words_input()
     open_template()
