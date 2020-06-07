@@ -18,7 +18,7 @@ def welcome_mesage():
 requeted_words = [
     'an Adjective', 
     'an Adjective', 
-    'a Firt Name', 
+    'a First Name', 
     'a Past Tense Verb', 
     'a First Name',
     'an Adjective', 
@@ -46,26 +46,25 @@ def words_input():
     print(f'words entered: {words}')
 
 def open_template():
-    with open('./template.txt', 'rb') as original_template:
+    with open('./template.txt', 'r') as original_template:
         contents = original_template.read()
-        print(contents)
-        for x in contents:
-            a = contents.find(123) 
-            b = contents.find(125)
-            tobereplaced = contents[a:b+1]
-            #print(x)
-            print(tobereplaced, 'to be replcaed')
-            value = 'words[0]'
-            print(value, 'value')
-            
-            #contents.replace(tobereplaced, value)
+        count = 0
+        while count < 21:
+            for x in contents[:1]:
+                a = contents.find('{')
+                b = contents.find('}') 
+                tobereplaced = contents[a:b+1]
+                value = words[count]
+                new_content = contents.replace(tobereplaced, value, 1)
+                contents = new_content
+            count += 1
 
-    with open('./final_text.txt', 'wb') as final_text:
-        final_text.write(contents)
+    with open('./final_text.txt', 'w') as final_text:
+        final_text.write(new_content)
 
 def main():
     welcome_mesage()
-    #words_input()
+    words_input()
     open_template()
 
 main()
