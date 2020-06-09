@@ -25,6 +25,28 @@ def welcome_mesage():
     based upon your input.
     ''')
 
+
+# Global Variables
+path = './assets/'
+file = 'template.txt'
+
+def open_template(path, file):
+    """
+    Open and read the template.txt file locate in the assets folder
+    """
+    try:
+        full_path = path + file
+        with open(full_path, 'r') as original_template:
+            contents = original_template.read()
+            get_words(contents)
+              
+    except FileNotFoundError as err:
+        with open('./assets/error_log.txt', 'a' ) as error_log:
+            error_log.write(f'\nFile does not exits error: \n{err}\n{str(dateTimeObj)}\n')
+    except TypeError as err:
+        with open('./assets/error_log.txt', 'a' ) as error_log:
+            error_log.write(f'\nType Error encountered: \n{err}\n{str(dateTimeObj)}\n')
+
 def get_words(contents):
     curly = "{"
     last_word = False
@@ -45,32 +67,13 @@ def get_words(contents):
                 new_content = contents.replace(tobereplaced, value, 1)
                 contents = new_content
             count += 1
-    
-    return new_content
+    write_new_content(new_content)
+       
 
 def write_new_content(new_template):
     with open('./assets/final_text.txt', 'w') as final_text:
-            final_text.write(new_template)
-            print(new_template)
-
-
-def open_template():
-    """
-    Open and read the template.txt file locate in the assets folder
-    """
-    try:
-        with open('./assets/template.txt', 'r') as original_template:
-            contents = original_template.read()
-            
-            get_words(contents)
-            write_new_content(get_words)
-        
-    except FileNotFoundError as err:
-        with open('./assets/error_log.txt', 'a' ) as error_log:
-            error_log.write(f'\nFile does not exits error: \n{err}\n{str(dateTimeObj)}\n')
-    except TypeError as err:
-        with open('./assets/error_log.txt', 'a' ) as error_log:
-            error_log.write(f'\nType Error encountered: \n{err}\n{str(dateTimeObj)}\n')
+        final_text.write(new_template)
+        print(new_template)
 
 
 def main():
@@ -79,7 +82,7 @@ def main():
     """
     try:
         welcome_mesage()
-        open_template()    
+        open_template(path, file)    
     except KeyboardInterrupt:
         print('Program was closed by the user')    
 

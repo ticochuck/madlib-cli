@@ -58,6 +58,8 @@ new_content = contents.replace(tobereplaced, value, 1)
 
 - https://realpython.com/read-write-files-python/
 
+- https://thispointer.com/python-how-to-get-current-date-and-time-or-timestamp/
+
 
 ## Lab03 - Errors, Files, and Packaging
 

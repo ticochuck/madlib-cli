@@ -1,1 +1,33 @@
-File does not exits error
+File does not exits error 
+2020-06-08 16:52:01.912821File does not exits error 
+2020-06-08 16:52:20.588872File does not exits error 
+2020-06-08 16:53:25.066742
+File does not exits error 
+2020-06-08 16:53:42.529931
+File does not exits error 
+2020-06-08 16:53:47.743360
+Type Error encountered 
+2020-06-08 17:16:02.550041
+Type Error encountered 
+write() argument must be str, not function
+2020-06-08 17:19:53.875110
+Type Error encountered 
+write() argument must be str, not function
+ 2020-06-08 17:22:33.906316
+
+Type Error encountered: 
+write() argument must be str, not function
+2020-06-08 17:23:39.577444
+
+
+Type Error encountered: 
+write() argument must be str, not function
+2020-06-08 17:24:08.176106
+
+
+Type Error encountered: 
+write() argument must be str, not function
+2020-06-09 10:31:01.245760
+Type Error encountered: 
+write() argument must be str, not function
+2020-06-09 10:31:48.868396
